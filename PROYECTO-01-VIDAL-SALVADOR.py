@@ -32,17 +32,7 @@ if admin == 1:
 
     while not leave:
         #General menu.
-        options = int(input(
-        '\n**************MENU**************: ',
-        '\n(1)Top-selling products.',
-        '\n(2)Products with the highest searches.'
-        '\n(3)Products with minors sales by category.',
-        '\n(4)Products with fewer searches by category.'
-        '\n(5)Products with the best reviews.',
-        '\n(6)Products with the worst reviews.',
-        '\n(7)Finance.'
-        '\n(8)Leave.',
-        '\nSelect an option: '))
+        options = int(input('\n**************MENU**************: \n(1)Top-selling products.\n(2)Products with the highest searches.\n(3)Products with minors sales by category.\n(4)Products with fewer searches by category.\n(5)Products with the best reviews.\n(6)Products with the worst reviews.\n(7)Finance.\n(8)Leave.\nSelect an option: '))
 
         if options == 1:
             #Top-selling products.
@@ -336,13 +326,12 @@ if admin == 1:
                 counter = 0
 
             #Sort the list.
-            month_total_revenue = 0
             sort_month_revenue = []
             for value in range(1, 13):
                 for element in monthly_revenue:
                     if element[1] == value:
                         sort_month_revenue.append(element)
-
+                        
             #Create a list of average revenue for each month.
             sum_month_revenue = 0
             average = 0
