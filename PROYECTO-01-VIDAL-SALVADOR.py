@@ -53,9 +53,8 @@ if admin == 1:
             for i in range(0, length): 
                 for j in range(0, length-i-1): 
                     if (selling_list[j][1] < selling_list[j + 1][1]): 
-                        tempo = selling_list[j] 
-                        selling_list[j]= selling_list[j + 1] 
-                        selling_list[j + 1]= tempo
+                        selling_list[j], selling_list[j + 1]  = selling_list[j + 1], selling_list[j]
+            #[[52, 44], [45, 52], [48, 84]]
 
             #Show the top-selling products.
             print('\n\nTop-selling products are:\n')
@@ -305,13 +304,14 @@ if admin == 1:
                     if product[0] == sale[1]:
                         counter += 1
                         if counter != 0:
-                            revenue_list.append(product[2])
+                            revenue_list.append([product[2], sale[4]])
                 counter = 0
 
             #Sum all the values on the list.
             total_revenue = 0
             for value in revenue_list:
-                total_revenue += value
+                if value[1] == 0:
+                    total_revenue += value[0]
             print('\n\nThe total revenue is:', total_revenue)
             
             monthly_revenue = []
@@ -322,7 +322,7 @@ if admin == 1:
                         counter += 1
                         if counter != 0:
                             month = int(sale[3][3:5])
-                            monthly_revenue.append([product[2], month])
+                            monthly_revenue.append([product[2], month, sale[4]])
                 counter = 0
 
             #Sort the list.
@@ -340,7 +340,7 @@ if admin == 1:
             monthly_sales_revenue = []
             for value in range(1, 13):
                 for item in sort_month_revenue:
-                    if item[1] == value:
+                    if item[1] == value and item[2] == 0:
                         sum_month_revenue += item[0]
                         counter +=1
                     if counter != 0:
