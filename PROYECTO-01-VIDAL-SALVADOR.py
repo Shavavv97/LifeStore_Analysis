@@ -53,8 +53,9 @@ if admin == 1:
             for i in range(0, length): 
                 for j in range(0, length-i-1): 
                     if (selling_list[j][1] < selling_list[j + 1][1]): 
-                        selling_list[j], selling_list[j + 1]  = selling_list[j + 1], selling_list[j]
-            #[[52, 44], [45, 52], [48, 84]]
+                        tempo = selling_list[j] 
+                        selling_list[j]= selling_list[j + 1] 
+                        selling_list[j + 1]= tempo
 
             #Show the top-selling products.
             print('\n\nTop-selling products are:\n')
